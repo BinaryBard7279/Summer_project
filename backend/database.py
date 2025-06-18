@@ -1,33 +1,44 @@
-from sqlalchemy import create_engine, MetaData
-from sqlalchemy.ext.declarative import declarative_base
+# backend/database.py
+
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy import Column, Integer, String, Text
 
-# Указываем URI для подключения к базе данных SQLite
 DATABASE_URL = "sqlite+aiosqlite:///./database.db"
 
-# Создаём объект движка
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# Создаем асинхронный движок
+engine = create_async_engine(
+    DATABASE_URL,
+    echo=True,
+    future=True
+)
 
-# Создаём объект Metadata
-metadata = MetaData()
+# Сессии для работы с базой данных
+AsyncSessionLocal = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False
+)
 
-# Создаём базовый класс для определения моделей
 Base = declarative_base()
 
-# Определяем модель User
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    fio = Column(String, index=True)  # Фамилия и имя
-    specialty = Column(String)          # Специальность
-    course = Column(Integer)            # Курс
-    record_book = Column(String)        # Номер зачетной книжки
+    fio = Column(String, nullable=False)
+    specialty = Column(String, nullable=False)
+    course = Column(Integer, nullable=False)
+    record_book = Column(String, unique=True, nullable=False)
 
-# Определяем модель Job
 class Job(Base):
     __tablename__ = "jobs"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)  # Название работы
-    description = Column(Text)           # Описание работы
+    title = Column(String, nullable=False)
+    description = Column(Text, nullable=False)
+
+# Функция получения базы данных
+async def get_db() -> AsyncSession:
+    async with AsyncSessionLocal() as session:
+        yield session
