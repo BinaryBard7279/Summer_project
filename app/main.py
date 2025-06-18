@@ -6,7 +6,6 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from datetime import timedelta
 from typing import List, Optional
-
 from . import models, schemas, crud, auth
 from .database import SessionLocal, engine
 from .config import settings
