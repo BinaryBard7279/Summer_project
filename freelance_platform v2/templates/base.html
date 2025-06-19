@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фриланс-платформа</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Фриланс-платформа</h1>
+            <div class="auth-panel">
+                {% if request.cookies.get('is_admin') %}
+                    <a href="/admin/dashboard">Панель</a>
+                    <a href="/logout">Выйти</a>
+                {% elif request.cookies.get('user_id') %}
+                    <a href="/logout">Выйти</a>
+                {% else %}
+                    <a href="/admin/login">Админ</a>
+                    <a href="/user/login">Вход</a>
+                    <a href="/user/register">Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
