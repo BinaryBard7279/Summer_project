@@ -22,20 +22,50 @@ body {
     border: 1px solid #cbeacb;
 }
 
-.login-form {
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toggle-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #1E1E1E;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.toggle-btn.active {
+    background: #93EFA4;
+    color: #1E1E1E;
+}
+
+.login-form,
+.register-form {
     display: flex;
     flex-direction: column;
 }
 
-.login-form label {
+.hidden {
+    display: none;
+}
+
+.login-form label,
+.register-form label {
     font-size: 16px;
     color: #1E1E1E;
     margin-bottom: 8px;
     font-weight: 400;
 }
 
-.login-form input[type="email"],
-.login-form input[type="password"] {
+.login-form input,
+.register-form input,
+.register-form select {
     padding: 10px 12px;
     border: none;
     border-radius: 7px;
@@ -43,14 +73,18 @@ body {
     font-size: 17px;
     margin-bottom: 24px;
     transition: box-shadow 0.2s;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
-.login-form input[type="email"]:focus,
-.login-form input[type="password"]:focus {
+.login-form input:focus,
+.register-form input:focus,
+.register-form select:focus {
     box-shadow: 0 0 0 2px #7be89c;
+    outline: none;
 }
 
-.login-form button {
+.login-form button,
+.register-form button {
     background: #2C2C2C;
     color: #fff;
     border: none;
@@ -63,7 +97,8 @@ body {
     transition: background 0.2s;
 }
 
-.login-form button:hover {
+.login-form button:hover,
+.register-form button:hover {
     background: #444;
 }
 
@@ -95,9 +130,14 @@ body {
     position: fixed;
     z-index: 10;
 }
+
 .footer a {
     color: #fff;
     text-decoration: none;
     margin-left: 8px;
     transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: #93EFA4;
 }

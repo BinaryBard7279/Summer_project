@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход в аккаунт</title>
+    <title>Аккаунт</title>
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="../static/account.css">
     <!-- Google Fonts для современного шрифта -->
@@ -12,16 +12,51 @@
 <body>
     <!-- Центрированный контейнер формы -->
     <div class="login-container">
-        <!-- Форма авторизации -->
-        <form class="login-form">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+        <!-- Переключатель между формами -->
+        <div class="form-toggle">
+            <button class="toggle-btn active" data-form="login">Вход</button>
+            <button class="toggle-btn" data-form="register">Регистрация</button>
+        </div>
 
-            <label for="password">Пароль</label>
-            <input type="password" id="password" name="password" required>
+        <!-- Форма входа -->
+        <form class="login-form" id="loginForm">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" required>
+
+            <label for="login-password">Пароль</label>
+            <input type="password" id="login-password" name="password" required>
 
             <button type="submit">Войти</button>
             <a href="#" class="forgot">Забыли пароль?</a>
+        </form>
+
+        <!-- Форма регистрации -->
+        <form class="register-form hidden" id="registerForm">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" name="email" required>
+
+            <label for="reg-password">Пароль</label>
+            <input type="password" id="reg-password" name="password" required>
+
+            <label for="fullname">ФИО</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="student-id">Номер зачетки</label>
+            <input type="text" id="student-id" name="student_id" required>
+
+            <label for="course">Курс</label>
+            <select id="course" name="course" required>
+                <option value="">Выберите курс</option>
+                <option value="1">1 курс</option>
+                <option value="2">2 курс</option>
+                <option value="3">3 курс</option>
+                <option value="4">4 курс</option>
+            </select>
+
+            <label for="speciality">Специальность</label>
+            <input type="text" id="speciality" name="speciality" required>
+
+            <button type="submit">Зарегистрироваться</button>
         </form>
     </div>
     <!-- Нижний футер -->
@@ -30,5 +65,24 @@
         <a href="#">VK</a>
         <a href="#">Telegram</a>
     </footer>
+
+    <script>
+        // Переключение между формами
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const formType = button.dataset.form;
+                if (formType === 'login') {
+                    document.getElementById('loginForm').classList.remove('hidden');
+                    document.getElementById('registerForm').classList.add('hidden');
+                } else {
+                    document.getElementById('loginForm').classList.add('hidden');
+                    document.getElementById('registerForm').classList.remove('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
