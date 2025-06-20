@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-dashboard">
+    <h2>Панель администратора</h2>
+    
+    <div class="add-job-form">
+        <h3>Добавить кейс</h3>
+        <form method="post" action="/admin/jobs/add">
+            <input type="text" name="title" placeholder="Название" required>
+            <textarea name="description" placeholder="Описание" required></textarea>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    
+    <div class="jobs-list">
+        <h3>Список кейсов</h3>
+        {% for job in jobs %}
+        <div class="job-item">
+            <div>
+                <h4>{{ job.title }}</h4>
+                <p>{{ job.description }}</p>
+            </div>
+            <form method="post" action="/admin/jobs/delete/{{ job.id }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
