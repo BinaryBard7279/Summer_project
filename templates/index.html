@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Биржа фриланса для студентов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <!-- Верхняя панель с логотипом, поиском и профилем -->
+    <header class="header">
+        <label class="switch">
+            <input class="switch__input" type="checkbox" data-theme-toggle>
+            <span class="switch__slider"></span>
+        </label>
+        <div class="header__search">
+            <button class="menu-btn"><img src="../static/media/menu.svg" alt="Menu"></button>
+            <input type="text" placeholder="Поиск заказов по тегам">
+            <button class="search-btn"><img src="../static/media/search.svg" alt="Search"></button>
+        </div>
+        <div class="header__profile">
+            <button class="profile-btn" id="profileBtn">
+                <img src="../static/media/profile.svg" alt="Profile">
+            </button>
+            <div class="profile-menu hidden" id="profileMenu">
+                <a href="/profile" class="menu-item">Профиль</a>
+                <a href="/active-orders" class="menu-item">Активные заказы</a>
+                <a href="/completed-orders" class="menu-item">Выполненные заказы</a>
+                <hr>
+                <button class="menu-item logout">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Большое изображение под шапкой -->
+    <div class="main-image">
+        <img src="../static/media/image.png" alt="BSTU" />
+    </div>
+
+    <!-- Основной контент -->
+    <main>
+        <div class="orders-container">
+            <h1 class="main-title">Активные заказы</h1>
+            <section class="orders">
+                <!-- Карточка заказа -->
+                <div class="order-card">
+                    <h2>Веб-разработчик</h2>
+                    <p>Требуется веб-разработчик для создания сайта доставки частным лицам.<br>
+                    Студент будет задействован в разработке сайта.<br>
+                    Требуются продвинутые знания.</p>
+                    <div class="order-card__actions">
+                        <button class="view-btn">Просмотр</button>
+                        <button class="respond-btn">Откликнуться</button>
+                    </div>
+                </div>
+                <div class="order-card">
+                    <h2>Веб-разработчик</h2>
+                    <p>Требуется веб-разработчик для создания сайта доставки частным лицам.<br>
+                    Студент будет задействован в разработке сайта.<br>
+                    Требуются продвинутые знания.</p>
+                    <div class="order-card__actions">
+                        <button class="view-btn">Просмотр</button>
+                        <button class="respond-btn">Откликнуться</button>
+                    </div>
+                </div>
+                <div class="order-card">
+                    <h2>Веб-разработчик</h2>
+                    <p>Требуется веб-разработчик для создания сайта доставки частным лицам.<br>
+                    Студент будет задействован в разработке сайта.<br>
+                    Требуются продвинутые знания.</p>
+                    <div class="order-card__actions">
+                        <button class="view-btn">Просмотр</button>
+                        <button class="respond-btn">Откликнуться</button>
+                    </div>
+                </div>
+                <div class="order-card">
+                    <h2>Веб-разработчик</h2>
+                    <p>Требуется веб-разработчик для создания сайта доставки частным лицам.<br>
+                    Студент будет задействован в разработке сайта.<br>
+                    Требуются продвинутые знания.</p>
+                    <div class="order-card__actions">
+                        <button class="view-btn">Просмотр</button>
+                        <button class="respond-btn">Откликнуться</button>
+                    </div>
+                </div>
+                <div class="order-card">
+                    <h2>Веб-разработчик</h2>
+                    <p>Требуется веб-разработчик для создания сайта доставки частным лицам.<br>
+                    Студент будет задействован в разработке сайта.<br>
+                    Требуются продвинутые знания.</p>
+                    <div class="order-card__actions">
+                        <button class="view-btn">Просмотр</button>
+                        <button class="respond-btn">Откликнуться</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Нижний футер -->
+    <footer class="footer">
+        <span>2025</span>
+        <a href="#">VK</a>
+        <a href="#">Telegram</a>
+    </footer>
+
+    <!-- Подключение JavaScript -->
+    <script src="../static/js/main.js"></script>
+</body>
+</html>
