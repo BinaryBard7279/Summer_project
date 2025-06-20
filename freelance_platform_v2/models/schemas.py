@@ -21,6 +21,8 @@ class UserOut(UserBase):
 class JobCreate(BaseModel):
     title: str
     description: str
+    srok: str
+    money: str
 
 class JobOut(JobCreate):
     id: int

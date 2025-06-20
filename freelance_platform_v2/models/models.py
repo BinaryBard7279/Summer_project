@@ -22,6 +22,8 @@ class Job(Base): # модель таблицы Job в БД
     id = Column(Integer, primary_key=True, index=True) # id 
     title = Column(String, nullable=False) # название вакансии 
     description = Column(String, nullable=False) # описание вакансии
+    srok = Column(String, nullable=False)
+    money = Column(String, nullable=False)
     
     responses = relationship("Response", back_populates="job")
 

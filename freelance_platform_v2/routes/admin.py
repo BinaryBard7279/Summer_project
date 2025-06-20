@@ -35,12 +35,14 @@ async def add_job(
     request: Request,
     title: str = Form(...),
     description: str = Form(...),
+    srok: str = Form(...),
+    money: str = Form(...),
     db: Session = Depends(get_db)
 ):
     if not request.cookies.get("is_admin"):
         raise HTTPException(status_code=403)
     
-    if not title or not description:
+    if not title or not description or not srok or not money:
         jobs = db.query(Job).all()
         return templates.TemplateResponse("admin/dashboard.html", {
             "request": request,
@@ -48,7 +50,7 @@ async def add_job(
             "error": "Все поля обязательны для заполнения"
         })
     
-    db_job = Job(title=title, description=description)
+    db_job = Job(title=title, description=description, srok=srok, money=money)
     db.add(db_job)
     db.commit()
     return RedirectResponse(url="/admin/dashboard", status_code=303)
