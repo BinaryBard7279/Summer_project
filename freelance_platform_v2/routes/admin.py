@@ -35,8 +35,8 @@ async def add_job(
     request: Request,
     title: str = Form(...),
     description: str = Form(...),
-    srok: str = Form(...),
-    money: str = Form(...),
+    srok: int = Form(...),
+    money: int = Form(...),
     db: Session = Depends(get_db)
 ):
     if not request.cookies.get("is_admin"):
