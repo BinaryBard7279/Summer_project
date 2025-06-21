@@ -14,14 +14,12 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 /* Шапка сайта */
 header {
     background-color: #4361ee;
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .header-content {
@@ -54,7 +52,7 @@ header {
 }
 
 .theme-toggle {
-    background: rgba(255, 255, 255, 0.2);
+    background: #FFFFFF33;
     border: none;
     width: 60px;
     height: 30px;
@@ -73,7 +71,7 @@ header {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: white;
+    background: #fff;
     transition: all 0.3s ease;
     left: 4px;
 }
@@ -116,7 +114,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
 }
@@ -126,7 +124,7 @@ header {
     text-align: center;
     padding: 40px 0 30px;
     background: linear-gradient(135deg, #4cc9f0, #4361ee);
-    color: white;
+    color: #fff;
     margin-bottom: 30px;
 }
 
@@ -183,41 +181,37 @@ header {
     margin-bottom: 40px;
 }
 
-.case-card {
-    background: #f8f9fa;
+.case-card, .project-card {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e9ecef;
-    position: relative;
 }
 
-.case-card:hover {
+.case-card:hover, .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(67, 97, 238, 0.15);
     z-index: 10;
 }
 
-.card-header {
+.card-header, .project-card__header {
     padding: 20px;
 }
 
-.card-title {
+.card-title, .project-card__title {
     font-size: 20px;
     margin-bottom: 10px;
     color: #3a0ca3;
 }
 
-.card-description {
+.card-description, .project-card__description {
     color: #555;
     margin-bottom: 15px;
     line-height: 1.5;
 }
 
-.card-details {
+.card-details, .project-card__details {
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
@@ -225,17 +219,17 @@ header {
     margin-top: auto;
 }
 
-.detail-item {
+.detail-item, .project-card__detail {
     text-align: center;
 }
 
-.detail-label {
+.detail-label, .project-card__detail-label {
     font-size: 12px;
     color: #6c757d;
     margin-bottom: 3px;
 }
 
-.detail-value {
+.detail-value, .project-card__detail-value {
     font-weight: 600;
     font-size: 18px;
 }
@@ -244,37 +238,33 @@ header {
     color: #2ecc71;
 }
 
-.card-action {
-    padding: 20px;
+.card-action, .project-card__action {
+    padding: 10px 20px;
     padding-top: 0;
 }
 
-.apply-btn {
-    display: block;
+.apply-btn, .project-card__apply-btn {
     width: 100%;
     padding: 12px;
     background: #4361ee;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    text-align: center;
     transition: background 0.3s ease;
 }
 
-.apply-btn:hover {
+.apply-btn:hover, .project-card__apply-btn:hover {
     background: #3a56d4;
 }
 
 /* Подвал */
 footer {
     background: #3a0ca3;
-    color: white;
+    color: #fff;
     padding: 10px 0;
-    text-align: center;
-    margin-top: 30px;
 }
 
 .footer-content {
@@ -286,9 +276,6 @@ footer {
 .footer-logo {
     font-size: 24px;
     margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .footer-logo i {
@@ -305,22 +292,27 @@ footer {
     background: linear-gradient(135deg, #2a6b7f, #2a3a7e);
 }
 
-.dark-theme .case-card {
+.dark-theme .case-card,
+.dark-theme .project-card {
     background: #252525;
     border-color: #333;
 }
 
 .dark-theme .card-header,
-.dark-theme .card-details {
+.dark-theme .project-card__header,
+.dark-theme .card-details,
+.dark-theme .project-card__details {
     background: transparent;
     border-color: #333;
 }
 
-.dark-theme .card-title {
+.dark-theme .card-title,
+.dark-theme .project-card__title {
     color: #4cc9f0;
 }
 
-.dark-theme .card-description {
+.dark-theme .card-description,
+.dark-theme .project-card__description {
     color: #ccc;
 }
 
