@@ -33,4 +33,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 50);
         }, index * 150);
     });
+
+    // Анимация кнопок "Откликнуться"
+    const applyButtons = document.querySelectorAll('.apply-btn');
+    applyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const originalHTML = this.innerHTML;
+            
+            // Проверяем, чтобы не было повторного нажатия
+            if (this.classList.contains('clicked')) {
+                return;
+            }
+            
+            this.classList.add('clicked');
+            this.innerHTML = '<i class="fas fa-check"></i> Отклик отправлен';
+            this.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                this.innerHTML = originalHTML;
+                this.style.background = ''; // Возвращаем исходный цвет
+                this.classList.remove('clicked');
+            }, 2000);
+        });
+    });
 });
