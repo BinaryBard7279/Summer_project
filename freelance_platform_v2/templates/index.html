@@ -2,18 +2,27 @@
 
 {% block content %}
 <div class="job-list">
-    <h2>Доступные кейсы</h2>
-    
     {% for job in jobs %}
     <div class="job-card">
         <h3>{{ job.title }}</h3>
         <p>{{ job.description }}</p>
-        <p>{{ job.srok }}</p>
-        <p>{{ job.money }}</p>
+        <p>Срок: {{ job.srok }} дней</p>
+        <p>Оплата: {{ job.money }} руб.</p>
+        
         {% if request.cookies.get('user_id') %}
-        <form action="/jobs/respond/{{ job.id }}" method="post">
-            <button type="submit">Откликнуться</button>
-        </form>
+            {% set responded = false %}
+            {% for response in job.responses %}
+                {% if response.user_id == request.cookies.get('user_id')|int %}
+                    {% set responded = true %}
+                    <div class="alert alert-info">Вы откликнулись</div>
+                {% endif %}
+            {% endfor %}
+            
+            {% if not responded %}
+            <form method="post" action="/jobs/respond/{{ job.id }}">
+                <button type="submit" class="btn">Откликнуться</button>
+            </form>
+            {% endif %}
         {% endif %}
     </div>
     {% endfor %}

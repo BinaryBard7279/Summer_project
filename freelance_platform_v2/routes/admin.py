@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, Form, Depends, HTTPException
 from fastapi.responses import RedirectResponse, HTMLResponse
 from sqlalchemy.orm import Session
 from models.database import get_db
-from models.models import Job
+from models.models import Job, Response, User
 from fastapi.templating import Jinja2Templates
 import os
 
@@ -72,3 +72,31 @@ async def delete_job(
         db.delete(job)
         db.commit()
     return RedirectResponse(url="/admin/dashboard", status_code=303)
+
+@router.get("/admin/responses", response_class=HTMLResponse)
+async def view_responses(
+    request: Request,
+    db: Session = Depends(get_db)
+):
+    if not request.cookies.get("is_admin"):
+        raise HTTPException(status_code=403)
+    
+    responses = db.query(Response).join(User).join(Job).all()
+    return templates.TemplateResponse(
+        "admin/responses.html",
+        {"request": request, "responses": responses}
+    )
+
+@router.get("/admin/responses", response_class=HTMLResponse)
+async def view_responses(
+    request: Request,
+    db: Session = Depends(get_db)
+):
+    if not request.cookies.get("is_admin"):
+        raise HTTPException(status_code=403)
+    
+    responses = db.query(Response).join(User).join(Job).all()
+    return templates.TemplateResponse(
+        "admin/responses.html",
+        {"request": request, "responses": responses}
+    )

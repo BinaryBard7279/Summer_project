@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey # создаёт колонки в таблице БД и типа данных
 from sqlalchemy.orm import relationship
 from .database import Base
-
+from datetime import datetime
 
 class User(Base): # модель таблицы users в БД
     __tablename__ = "users" # название
@@ -14,8 +14,7 @@ class User(Base): # модель таблицы users в БД
     contacts = Column(String, unique=True, nullable=False) # контакнтые данные
     password_hash = Column(String, nullable=False) # хэш пароля
     
-    responses = relationship("Response", back_populates="user") # отклик
-
+    responses = relationship("Response", back_populates="user")
 
 class Job(Base): # модель таблицы Job в БД
     __tablename__ = "jobs" # название
@@ -28,14 +27,16 @@ class Job(Base): # модель таблицы Job в БД
     
     responses = relationship("Response", back_populates="job")
 
+from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+from .database import Base
 
-class Response(Base): # модель таблицы Отклик на вакансию
+class Response(Base):
     __tablename__ = "responses"
     
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     job_id = Column(Integer, ForeignKey("jobs.id"))
-    message = Column(String)
     
     user = relationship("User", back_populates="responses")
     job = relationship("Job", back_populates="responses")
