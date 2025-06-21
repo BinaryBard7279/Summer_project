@@ -11,6 +11,7 @@ class User(Base): # модель таблицы users в БД
     specialty = Column(String, nullable=False) # специальность 
     course = Column(Integer, nullable=False) # курс
     record_book = Column(String, unique=True, nullable=False) # зачётка
+    contacts = Column(String, unique=True, nullable=False) # контакнтые данные
     password_hash = Column(String, nullable=False) # хэш пароля
     
     responses = relationship("Response", back_populates="user") # отклик

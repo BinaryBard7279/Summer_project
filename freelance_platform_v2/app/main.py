@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, Depends
 from fastapi.staticfiles import StaticFiles # импорт класса для работы со статическими файлами
 from fastapi.templating import Jinja2Templates # шаблонизатор Jinja2
 from sqlalchemy.orm import Session # класс (супер) для работы с сессиями SQLAlchemy (запросы к БД)
-import os # работа с файловой системой (эта хуйня так-то не нужна)
+import os # работа с файловой системой
 
 from models.database import engine, Base, get_db # engine – движок SQLAlchemy для подключения к БД/
 from models.models import Job # импорт модели таблицы "Задания" из БД

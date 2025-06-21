@@ -31,11 +31,12 @@ async def register_user(
     specialty: str = Form(...),
     course: str = Form(...),
     record_book: str = Form(...),
+    contacts: str = Form(...),
     password: str = Form(...),
     confirm_password: str = Form(...),
     db: Session = Depends(get_db)
 ):
-    if not all([fio, specialty, course, record_book, password, confirm_password]):
+    if not all([fio, specialty, course, record_book, contacts, password, confirm_password]):
         return templates.TemplateResponse("user/register.html", {
             "request": request,
             "error": "Все поля обязательны для заполнения"
@@ -60,6 +61,7 @@ async def register_user(
             specialty=specialty,
             course=int(course),
             record_book=record_book,
+            contacts=contacts,
             password_hash=pwd_context.hash(password)
         )
         

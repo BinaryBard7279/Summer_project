@@ -7,6 +7,7 @@ class UserBase(BaseModel):
     course: int
     specialty: str
     record_book: str
+    contacts: str
 
 class UserCreate(UserBase):
     password: str
